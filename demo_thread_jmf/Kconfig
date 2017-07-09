@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config APP_THREADJMF
+	bool "\"Thread demo (JMF)"
+	default n
+	---help---
+		Enable the thread demo application
+
+if APP_THREADJMF
+
+config APP_THREADJMD_PROGNAME
+	string "Program name"
+	default "threadjmf"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config APP_THREADJMF_PRIORITY
+	int "thread demo task priority"
+	default 100
+
+config APP_THREADJMF_STACKSIZE
+	int "thread demo stack size"
+	default 2048
+
+endif

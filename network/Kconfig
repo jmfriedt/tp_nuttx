@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config APP_NETWORK
+	bool "\"Network analyzer"
+	default n
+	---help---
+		Enable the network analyzer application
+
+if APP_NETWORK
+
+config APP_NETWORK_PROGNAME
+	string "Program name"
+	default "network"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config APP_NETWORK_PRIORITY
+	int "Network analyzer task priority"
+	default 100
+
+config APP_NETWORK_STACKSIZE
+	int "Network analyzer stack size"
+	default 2048
+
+endif
